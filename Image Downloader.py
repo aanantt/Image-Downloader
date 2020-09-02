@@ -1,5 +1,6 @@
 import requests
 import concurrent.futures
+import time
 
 
 def download(url):
@@ -18,6 +19,7 @@ urls = ["https://cdn.pixabay.com/photo/2020/08/22/05/58/woman-5507606_960_720.jp
         "https://cdn.pixabay.com/photo/2020/04/18/18/12/portrait-5060365__340.jpg",
         "https://cdn.pixabay.com/photo/2020/07/07/13/52/woman-5380651__340.jpg"
         ]
-
+t1 = time.time()
 with concurrent.futures.ThreadPoolExecutor() as exc:
     exc.map(download, urls)
+print(f"Download Finished in {time.time() - t1}")
